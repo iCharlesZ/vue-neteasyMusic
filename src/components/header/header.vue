@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="header-warpper">
 			<i class="menu icon-menu" @click="showMenu"></i>
-			<div class="centermenu">
+			<div class="centermenu" @click="hideMenu">
 				<router-link tag="i" to="/mymusic">
 					<i class="music icon-music"></i>
 				</router-link>
@@ -39,6 +39,11 @@
 				console.log('showMenu')
 				store.dispatch({
 					type: 'showSideBar'
+				})
+			},
+			hideMenu () {
+				store.dispatch({
+					type: 'hideSideBar'
 				})
 			}
 		}
