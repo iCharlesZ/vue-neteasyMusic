@@ -18,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-查看demo:(https://zhchi-me.github.io/vue-neteasyMusic/dist).
+
