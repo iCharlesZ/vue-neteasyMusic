@@ -1,15 +1,25 @@
 <template>
   <div id="app">
-  	<v-header></v-header>
+  	<v-header :index="2"></v-header>
+    <side-bar :info="info"></side-bar>
   </div>
 </template>
 
 <script>
 import header from './components/header/header.vue'
+import sidebar from './components/sidebar/sidebar.vue'
+import Vue from 'vue'
+import store from './store'
 
 export default {
+  data () {
+    return {
+      info: {}
+    }
+  },
   components: {
-  	'v-header': header
+  	'v-header': header,
+    'side-bar': sidebar
   }
 }
 </script>

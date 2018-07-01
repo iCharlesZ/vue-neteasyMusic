@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="header-warpper">
-			<i class="menu icon-menu"></i>
+			<i class="menu icon-menu" @click="showMenu"></i>
 			<div class="centermenu">
 				<router-link tag="i" to="/mymusic">
 					<i class="music icon-music"></i>
@@ -20,9 +20,29 @@
 </template>
 
 <script>
-export default{
+	import store from '../../store'
 
-}
+	export default{
+		props: {
+			index: {
+				type: Number,
+				default: 0
+			}
+		},
+		data () {
+			return {
+
+			}
+		},
+		methods: {
+			showMenu () {
+				console.log('showMenu')
+				store.dispatch({
+					type: 'showSideBar'
+				})
+			}
+		}
+	}
 </script>
 
 
