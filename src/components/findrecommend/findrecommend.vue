@@ -26,14 +26,17 @@
 <script>
 	import 'swiper/dist/css/swiper.css'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
+	import taylorswift from '../../assets/images/swiper/taylor-swift.jpg'
+	import xusong from '../../assets/images/swiper/xusong.jpg'
+	import linjunjie from '../../assets/images/swiper/linjunjie.jpg'
 
 	export default{
 		data() {
 			return {
 				items:[
-					'./static/images/swiper/taylor-swift.jpg',
-					'./static/images/swiper/xusong.jpg',
-					'./static/images/swiper/linjunjie.jpg'
+					taylorswift,
+					xusong,
+					linjunjie
 				],
 				swiperOption: {
 					autoplay: 3000,
