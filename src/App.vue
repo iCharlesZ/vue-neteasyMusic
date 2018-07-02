@@ -25,8 +25,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-@import "./assets/font-icon/style.css"
-@import "common/stylus/global.styl"
+@import "../static/font-icon/style.css"
 
 body,html
   margin:0

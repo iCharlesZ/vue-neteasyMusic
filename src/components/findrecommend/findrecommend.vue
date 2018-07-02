@@ -31,9 +31,9 @@
 		data() {
 			return {
 				items:[
-					'/static/images/swiper/taylor-swift.jpg',
-					'/static/images/swiper/xusong.jpg',
-					'/static/images/swiper/linjunjie.jpg'
+					'./static/images/swiper/taylor-swift.jpg',
+					'./static/images/swiper/xusong.jpg',
+					'./static/images/swiper/linjunjie.jpg'
 				],
 				swiperOption: {
 					autoplay: 3000,
