@@ -1,6 +1,9 @@
 
 const audioInfo = {
 	state: {
+		// audio元素
+		audioelement: '',
+		// 是否显示audio的列表
 		showMusicDetail: false,
 		// 是否显示歌单列表
 		showSongSheet: false,

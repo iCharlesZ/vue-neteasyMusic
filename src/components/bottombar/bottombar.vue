@@ -7,8 +7,8 @@
 				<p class="music-singer">田馥甄</p>
 			</div>
 		</div>
-		<div class="playpause">
-			<i class="icon-play" @click.stop></i>
+		<div class="playpause" @click.stop="playpause">
+			<i :class="iconPlayPause?'icon-pause':'icon-play'"></i>
 		</div>
 		<i class="music-list icon-list-music" @click.stop></i>
 	</div>
@@ -20,10 +20,20 @@
 	export default {
 		data () {
 			return {
-				
+				audioInfo: {
+			
+				},
+				state: {
+					isplaying: false
+				}
 			}
 		},
 		methods: {
+			// 控制音乐播放暂停
+			playpause () {
+				store.commit('togglePlay')
+			},
+			// 显示播放列表
 			showMusicDetail () {
 				console.log('showMusicDetail')
 				store.dispatch({
@@ -31,6 +41,17 @@
 					isShow: true
 				})
 			}
+		},
+		computed: {
+			iconPlayPause () {
+				return this.audioInfo.playing
+			}
+		},
+		mounted () {
+			// 所有的audio的 vuex 的状态信息
+			this.audioInfo = this.$store.state.audioInfo
+			// 音乐是否play
+			this.state.isplaying = this.audioInfo.playing
 		}
 	}
 </script>

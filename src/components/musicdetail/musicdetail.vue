@@ -17,7 +17,7 @@
 						<div class="swith-line">
 							<div class="triger" :class="isPlaying ? '' : 'pause'"></div>
 						</div>
-						<div class="cd-content">
+						<div class="cd-content" ref="cdcontent">
 							<div class="wrapper" ref="cd" :class="isPlaying ? 'animate ' : ''">
 								<div class="cd-bg"></div>
 								<img class="img" src="../../assets/images/tianfuzhen.jpg">
@@ -79,6 +79,15 @@
 			isPlaying () {
 				this.isPlay = this.$store.getters.getIsPlaying
 				return this.$store.getters.getIsPlaying ? this.$store.getters.getIsPlaying : ''
+			}
+		},
+		watch: {
+			isPlay: function (newisPlay, oldisPlay) {
+				if (newisPlay !== true) {
+					let imageTrans = getComputedStyle(this.$refs.cd).transform
+					let contentTrans = getComputedStyle(this.$refs.cdcontent).transform
+					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
+				}
 			}
 		},
 		components: {
