@@ -74,12 +74,8 @@
 				font-size:24px
 				i
 					margin:0 5px
-					color:#eee
+					color:rgba(255,255,255,0.3)
 					&.router-link-active
 						i
-							color:$link_active
-					&.active
-						color:#4AE0A8
-					&.music
-						font-size:22px
+							color:#fff
 </style>

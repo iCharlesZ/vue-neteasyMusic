@@ -1,11 +1,11 @@
 <template>
 	<div class="findrecommend">
-		<div class="mySwiper">
+		<div class="mySwp">
 			<swiper :options="swiperOption" ref="mySwiper">
 				<swiper-slide v-for="(item, index) in items" :key="index">
 					<img class="image" :src="item" />
 				</swiper-slide>
-				<div class="swiper-pagination" slot="pagination"></div> 
+				<div class="swiper-pagination" slot="pagination"></div>
 			</swiper> 
 		</div>
 			
@@ -90,15 +90,14 @@
 					"https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/swiper/linjunjie.jpg"
 				],
 				swiperOption: {
-					autoplay: 3000,
-					grabCursor: true,
-					setWrapperSize: true,
-					autoHeight: true,
-					pagination: '.swiper-pagination',
-					paginationClickable: true,
-					mousewheelControl: true,
-					autoplayDisableOnInteraction: false,
-					observeParents: true,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable :true
+					},
+					autoplay: {
+						delay: 3000,
+						disableOnInteraction: false
+					},
 					loop: true,
 				}
 			}
@@ -138,14 +137,17 @@
 		z-index:11
 		background:#fff
 		-webkit-overflow-scrolling:touch
-		.mySwiper
-			height:180px;
+		.mySwp
+			min-height:165px;
 		.swiper-container
 			position:relative
 			.swiper-wrapper
 				.swiper-slide
 					.image
 						width:100%
+			.swiper-pagination
+				.swiper-pagination-bullet-active
+						background:#C62F2F!important
 		.recommend-type
 			width:100%
 			height:90px
