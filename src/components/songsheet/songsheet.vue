@@ -7,12 +7,14 @@
 				<i class="search icon-search"></i>
 				<i class="menu icon-list-circle"></i>
 			</div>
+			<bottom-bar></bottom-bar>
 		</div>
 	</transition>
 </template>
 
 <script>
 	import store from './../../store'
+	import bottombar from './../bottombar/bottombar.vue'
 	
 	export default{
 		methods: {
@@ -28,6 +30,9 @@
 				this.isShow = this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
 				return this.isShow
 			}
+		},
+		components: {
+			'bottom-bar': bottombar
 		}
 	}
 </script>

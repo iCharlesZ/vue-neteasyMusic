@@ -20,19 +20,76 @@
         		<p class="title">云音乐热歌榜</p>
         	</div>
         </div>
+        <findsheettitle></findsheettitle>
+        <div class="recommend-list" @click="showSongSheet">
+        	<findsheetlist 
+        		v-for="(sheet, index) of listNum"
+        		:key="sheet.id" 
+        		:imagesrc="sheet.imgsrc" 
+        		:listwidth="listwidth"
+        		:listpadding="padding"
+        		:showbottomtitle="sheet.showbottomtitle" 
+        		:bottomtitle="sheet.bottomtitle"
+        		></findsheetlist>
+        </div>
 	</div>
 </template>
 
 <script>
+	import store from '../../store'
 	import 'swiper/dist/css/swiper.css'
+	import findsheettitle from '../findsheettitle/findsheettitle'
+	import findsheetlist from '../findsheetlist/findsheetlist'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 	import taylorswift from '../../assets/images/swiper/taylor-swift.jpg'
 	import xusong from '../../assets/images/swiper/xusong.jpg'
 	import linjunjie from '../../assets/images/swiper/linjunjie.jpg'
 
+	import listNum1 from '../../assets/images/listNum1.jpg'
+	import listNum2 from '../../assets/images/listNum2.jpg'
+	import listNum3 from '../../assets/images/listNum3.jpg'
+	import listNum4 from '../../assets/images/listNum4.jpg'
+	import listNum5 from '../../assets/images/listNum5.jpg'
+	import listNum6 from '../../assets/images/listNum6.jpg'
+
 	export default{
 		data() {
 			return {
+				listwidth: "33.3%",
+				padding: "0.5%", 
+				showbottomtitle: true,
+				listNum: [
+					{
+						id: 1, 
+						imgsrc: "http://p1.music.126.net/FcLkEIrwyp3p-OOjvBnV9A==/109951163396453847.jpg?param=140y140", 
+						bottomtitle: "甜味摇滚丨温柔在耳边凝成絮语"
+					},
+					{
+						id: 2, 
+						imgsrc: "http://p1.music.126.net/aouIEl00w9ys8cFQ5Spyqw==/109951163401657454.jpg?param=140y140", 
+						bottomtitle: "我多想再见你，哪怕匆匆一眼就别离"
+					},
+					{
+						id: 3, 
+						imgsrc: "http://p1.music.126.net/TU8_pba3jSzeKQ64PLFkiA==/109951163376936973.jpg?param=140y140", 
+						bottomtitle: "当三首情歌遇上一个伤感的故事"
+					},
+					{
+						id: 4, 
+						imgsrc: "http://p1.music.126.net/mfYxWU5mq2KMURFZKps36g==/109951163346749380.jpg?param=140y140", 
+						bottomtitle: "盘尼西林&落日飞车"
+					},
+					{
+						id: 5, 
+						imgsrc: "http://p1.music.126.net/Kav1gMEbl7pOqlCJqgkzZQ==/19123805742515320.jpg?param=140y140", 
+						bottomtitle: "欧美治愈|决定转身的时候就不要频频回头"
+					},
+					{
+						id: 6, 
+						imgsrc: "http://p1.music.126.net/PRmxpnXD_F2PjEKjITaT5g==/109951163391429716.jpg?param=140y140", 
+						bottomtitle: "慢慢喜欢你-陈一发儿"
+					}
+				],
 				items:[
 					taylorswift,
 					xusong,
@@ -48,7 +105,7 @@
 					mousewheelControl: true,
 					autoplayDisableOnInteraction: false,
 					observeParents: true,
-					loop: true,
+					loop: true
 				}
 			}
 		},
@@ -57,9 +114,20 @@
 				return this.$refs.mySwiper.swiper
 			}
 		},
+		methods: {
+			showSongSheet () {
+				console.log('showSongSheet')
+				store.commit({
+					type: 'setIsShowSongSheet',
+					isShow: true
+				})
+			}
+	    },
 		components: {
             swiper,
-            swiperSlide
+            swiperSlide,
+            findsheettitle,
+            findsheetlist
         },
         mounted() {
 			// 然后你就可以使用当前上下文内的swiper对象去做你想做的事了

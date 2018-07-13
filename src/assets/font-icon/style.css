@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?mstbet');
-  src:  url('fonts/icomoon.eot?mstbet#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?mstbet') format('truetype'),
-    url('fonts/icomoon.woff?mstbet') format('woff'),
-    url('fonts/icomoon.svg?mstbet#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?g6to1x');
+  src:  url('fonts/icomoon.eot?g6to1x#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?g6to1x') format('truetype'),
+    url('fonts/icomoon.woff?g6to1x') format('woff'),
+    url('fonts/icomoon.svg?g6to1x#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,54 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-imgsetting:before {
+  content: "\e939";
+}
+.icon-canclefullscreen:before {
+  content: "\e932";
+}
+.icon-fullscreen:before {
+  content: "\e933";
+}
+.icon-github:before {
+  content: "\e936";
+}
+.icon-clown:before {
+  content: "\e934";
+}
+.icon-smile:before {
+  content: "\e935";
+}
+.icon-works:before {
+  content: "\e937";
+}
+.icon-about:before {
+  content: "\e938";
+}
+.icon-erji:before {
+  content: "\e931";
+}
+.icon-date:before {
+  content: "\e92e";
+}
+.icon-rank-list:before {
+  content: "\e92f";
+}
+.icon-fm:before {
+  content: "\e930";
+}
+.icon-list-circle-small:before {
+  content: "\e92a";
+}
+.icon-download:before {
+  content: "\e92b";
+}
+.icon-like:before {
+  content: "\e92c";
+}
+.icon-msg:before {
+  content: "\e92d";
+}
 .icon-playdetail:before {
   content: "\e925";
 }
