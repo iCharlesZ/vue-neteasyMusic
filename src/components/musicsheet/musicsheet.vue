@@ -8,13 +8,13 @@
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
-		<div>
+		<div @click.stop="showSongSheet">
 			<div class="content">
-				<img class="sheetimg" alt="">
+				<img class="sheetimg" alt="" src="../../assets/images/coverImg.jpg">
 				<div class="detail">
 					<p class="name">我喜欢的音乐</p>
 					<p class="count">1首歌曲</p>
-					<i class="setting icon-list-circle"></i>
+					<i class="setting icon-list-circle" @click.stop="showMenu"></i>
 				</div>
 			</div>
 		</div>
@@ -22,8 +22,34 @@
 </template>
 
 <script>
-	export default{
+	import store from '../../store'
 
+	export default{
+		props: {
+
+		},
+		data () {
+			return {
+				isShow: false,
+				showDownloadImage: false,
+				sheetData: {}
+			}
+		},
+		methods: {
+			showSongSheet (data) {
+				console.log('showSongSheet')
+				store.commit({
+					type: 'setIsShowSongSheet',
+					isShow: true
+				})
+			},
+			showMenu () {
+				console.log('showMenu')
+				store.dispatch({
+					type: 'showMenuList'
+				})
+			}
+		}
 	}
 </script>
 

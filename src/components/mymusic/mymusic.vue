@@ -6,12 +6,15 @@
 		<list name="我的电台" iconinfo="icon-diantai" count="2"></list>
 		<list name="我的收藏" iconinfo="icon-collect" count="3"></list>
 		<musicsheet/>	
+		<menulist/>
 	</div>
 </template>
 
 <script>
 import list from '../list/list.vue'
 import musicsheet from '../musicsheet/musicsheet.vue'
+import menulist from '../menulist/menulist.vue'
+
 export default{
 	data(){
 		return{
@@ -20,7 +23,8 @@ export default{
 	},
 	components: {
 		list,
-		musicsheet
+		musicsheet,
+		menulist
 	}
 }
 </script>

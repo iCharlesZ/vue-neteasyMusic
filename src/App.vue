@@ -2,12 +2,14 @@
   <div id="app">
   	<v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
+    <song-sheet></song-sheet>
   </div>
 </template>
 
 <script>
 import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
+import songsheet from './components/songsheet/songsheet.vue'
 import Vue from 'vue'
 import store from './store'
 
@@ -19,7 +21,8 @@ export default {
   },
   components: {
   	'v-header': header,
-    'side-bar': sidebar
+    'side-bar': sidebar,
+    'song-sheet': songsheet
   }
 }
 </script>
