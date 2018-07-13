@@ -1,11 +1,14 @@
 <template>
 	<div class="findrecommend">
-		<swiper :options="swiperOption" ref="mySwiper">
-			<swiper-slide v-for="(item, index) in items" :key="index">
-				<img class="image" :src="item" />
-			</swiper-slide>
-			<div class="swiper-pagination" slot="pagination"></div> 
-		</swiper> 
+		<div class="mySwiper">
+			<swiper :options="swiperOption" ref="mySwiper">
+				<swiper-slide v-for="(item, index) in items" :key="index">
+					<img class="image" :src="item" />
+				</swiper-slide>
+				<div class="swiper-pagination" slot="pagination"></div> 
+			</swiper> 
+		</div>
+			
 		<div class="recommend-type">
         	<div class="div-type">
         		<i class="icon-type icon-fm"></i>
@@ -96,7 +99,7 @@
 					mousewheelControl: true,
 					autoplayDisableOnInteraction: false,
 					observeParents: true,
-					loop: true
+					loop: true,
 				}
 			}
 		},
@@ -119,12 +122,7 @@
             swiperSlide,
             findsheettitle,
             findsheetlist
-        },
-        mounted() {
-			// 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-			// this.swiper.slideTo(3, 1000, false)
-			console.log('mounted');
-		}
+        }
 	}
 </script>
 
@@ -140,6 +138,8 @@
 		z-index:11
 		background:#fff
 		-webkit-overflow-scrolling:touch
+		.mySwiper
+			height:180px;
 		.swiper-container
 			position:relative
 			.swiper-wrapper

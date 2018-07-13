@@ -1,5 +1,5 @@
 <template>
-	<div class="bottom-bar">
+	<div class="bottom-bar" @click="showMusicDetail">
 		<div class="music-info">
 			<img class="music-pic" src="../../assets/images/tianfuzhen.jpg">
 			<div class="music-detail">
@@ -8,9 +8,9 @@
 			</div>
 		</div>
 		<div class="playpause">
-			<i class="icon-play"></i>
+			<i class="icon-play" @click.stop></i>
 		</div>
-		<i class="music-list icon-list-music"></i>
+		<i class="music-list icon-list-music" @click.stop></i>
 	</div>
 </template>
 
@@ -18,7 +18,20 @@
 	import store from './../../store'
 
 	export default {
-
+		data () {
+			return {
+				
+			}
+		},
+		methods: {
+			showMusicDetail () {
+				console.log('showMusicDetail')
+				store.dispatch({
+					type: 'set_MusicDetail',
+					isShow: true
+				})
+			}
+		}
 	}
 </script>
 

@@ -4,6 +4,7 @@
     <side-bar :info="info"></side-bar>
     <bottom-bar></bottom-bar>
     <song-sheet></song-sheet>
+    <music-detail></music-detail>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import header from './components/header/header.vue'
 import sidebar from './components/sidebar/sidebar.vue'
 import bottombar from './components/bottombar/bottombar.vue'
 import songsheet from './components/songsheet/songsheet.vue'
+import musicdetail from './components/musicdetail/musicdetail.vue'
 import Vue from 'vue'
 import store from './store'
 
@@ -25,7 +27,8 @@ export default {
   	'v-header': header,
     'side-bar': sidebar,
     'bottom-bar': bottombar,
-    'song-sheet': songsheet
+    'song-sheet': songsheet,
+    'music-detail': musicdetail
   }
 }
 </script>
