@@ -10,7 +10,7 @@
 		</div>
 		<div @click.stop="showSongSheet">
 			<div class="content">
-				<img class="sheetimg" alt="" src="../../assets/images/coverImg.jpg">
+				<img class="sheetimg" alt="" src="../../assets/images/tianfuzhen.jpg">
 				<div class="detail">
 					<p class="name">我喜欢的音乐</p>
 					<p class="count">1首歌曲</p>

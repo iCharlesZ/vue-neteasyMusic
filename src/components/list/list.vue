@@ -101,13 +101,11 @@ export default {
 			font-size:14px
 			position:absolute
 			top:50%
-			color:$primarycolor
+			color:#C62F2F
 			right:5px
 			width:36px
 			height:36px
 			line-height:36px
 			text-align:center
 			transform:translate(0,-50%)
-			&:active
-				background:$list_active
 </style>

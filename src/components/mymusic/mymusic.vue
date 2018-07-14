@@ -1,10 +1,10 @@
 <template>
 	<div class="mymusic">
-		<list name="本地音乐" iconinfo="icon-music" count="28" :playing="true"></list>
-		<list name="最近播放" iconinfo="icon-zuijinplay" count="8"></list>
-		<list name="下载管理" iconinfo="icon-zuijinplay" count="8"></list>
-		<list name="我的电台" iconinfo="icon-diantai" count="2"></list>
-		<list name="我的收藏" iconinfo="icon-collect" count="3"></list>
+		<list name="本地音乐" iconinfo="icon-music" count="1" :playing="true"></list>
+		<list name="最近播放" iconinfo="icon-zuijinplay" count="0"></list>
+		<list name="下载管理" iconinfo="icon-zuijinplay" count="0"></list>
+		<list name="我的电台" iconinfo="icon-diantai" count="0"></list>
+		<list name="我的收藏" iconinfo="icon-collect" count="0"></list>
 		<musicsheet/>	
 		<menulist/>
 	</div>

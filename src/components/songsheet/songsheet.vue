@@ -7,6 +7,57 @@
 				<i class="search icon-search"></i>
 				<i class="menu icon-list-circle"></i>
 			</div>
+			<div class="content">
+				<div class="top" ref="top">
+					<div class="songsheetdisc">
+						<div class="songsheetimg">
+							<img src="../../assets/images/tianfuzhen.jpg" >
+							<span class="info">i</span>
+						</div>
+						<div class="disc">
+							<p class="songsheetname">我喜欢的音乐</p>
+							<div class="user">
+								<img  class="avatar" src="../../assets/images/headImg.jpg" alt="">
+								<p class="songsheetuser">zhchi</p>
+								<i class="icon-right"></i>
+							</div>
+						</div>
+					</div>
+					<div class="do">
+						<div class="list">
+							<i class="icon-msg"></i>
+							<span class="disc">评论</span>
+						</div>
+						<div class="list">
+							<i class="icon-share"></i>
+							<span class="disc">分享</span>
+						</div>
+						<div class="list">
+							<i class="icon-download"></i>
+							<span class="disc">下载</span>
+						</div>
+						<div class="list">
+							<i class="icon-list-circle-small"></i>
+							<span class="disc">多选</span>
+						</div>
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="bottom-wrapper">
+						<div class="info">
+							<i class="icon-music"></i>
+							<span class="name">播放全部</span>
+							<span class="count">(共 1 首)</span>
+						</div>
+						<div class="rightSetting">
+							<i class="icon-menu"></i>
+							<span>多选</span>
+						</div>
+					</div>
+					<div class="border-1px"></div>
+					<songlist/>
+				</div>
+			</div>
 			<bottom-bar></bottom-bar>
 		</div>
 	</transition>
@@ -14,6 +65,7 @@
 
 <script>
 	import store from './../../store'
+	import songlist from './../songlist/songlist.vue'
 	import bottombar from './../bottombar/bottombar.vue'
 	
 	export default{
@@ -32,7 +84,8 @@
 			}
 		},
 		components: {
-			'bottom-bar': bottombar
+			'bottom-bar': bottombar,
+			songlist
 		}
 	}
 </script>
@@ -82,6 +135,170 @@
 				white-space:nowrap
 				margin:0
 				padding:0 5px
+		.content
+			min-height: calc(100vh - 46px)
+			background:#FFF
+			box-sizing:border-box
+			.top
+				height:155px
+				background:#422222
+				padding:70px 25px 20px 25px
+				.songsheetdisc
+					height:100px
+					display:flex
+					.songsheetimg
+						position:relative
+						flex:0 0 100px
+						width:100px
+						height:100px
+						img
+							width:100px
+							height:100px
+						.info
+							display:block
+							position:absolute
+							bottom:2px
+							right:2px
+							width:16px
+							height:16px
+							border:1px solid #f0f0f0
+							border-radius:50%
+							text-align:center
+							line-height:16px
+							color:#fff
+							font-weight:400
+							background:rgba(0,0,0,0.6)
+					.disc
+						flex:1 1 auto
+						max-width: calc(100% - 100px)
+						margin-left:15px
+						display:flex
+						flex-direction:column
+						padding-top:10px
+						p
+							margin:0
+							&.songsheetname
+								height:40px
+								line-height:20px
+								font-size:14px
+								font-weight:500
+								overflow:hidden
+								color:#fff
+						.user
+							width:100%
+							height:30px
+							line-height:30px
+							display:flex
+							align-items:center
+							.avatar
+								width:20px
+								height:20px
+								border-radius:50%
+								color:#f0f0f0
+							.songsheetuser
+								text-indent:6px
+								max-width:calc( 100% - 40px )
+								text-overflow:ellipsis
+								white-space:nowrap
+								overflow:hidden
+								color:#f0f0f0
+								font-size:12px
+								color:#fff
+							i
+								width:20px
+								height:20px
+								text-align:center
+								line-height:20px
+								font-size:12px
+								color:#f0f0f0
+				.do
+					display:flex
+					width:100%
+					height:40px
+					align-items:center
+					margin-top:15px
+					div
+						flex:1
+						display:flex
+						flex-direction:column
+						align-items:center
+						color:#fff
+						&:active
+							color:#ccc
+						&.nocollect
+							i
+								color:rgba(255,255,255,0.3)
+							span
+								color:rgba(255,255,255,0.8)
+						i
+							width:28px
+							height:28px
+							font-size:18px
+							text-align:center
+							line-height:28px
+						span
+							font-size:12px
+			.bottom
+				position:relative
+				.border-1px
+					border-1px($border_1px)
+				.bottom-wrapper
+					height:42px
+					line-height:42px
+					.info
+						position:absolute
+						top:0
+						right:0
+						height:42px
+						width:100%
+						line-height:42px
+						font-size:0
+						&:active
+							background:$list_active
+						i
+							height:42px
+							width:42px
+							line-height:42px
+							text-align:center
+							font-size:16px
+							margin-right:5px
+							margin-left:10px
+							vertical-align:middle
+							color:#666
+						span
+							display:inline-block
+							vertical-align:middle
+							font-size:14px
+							color:#333
+							&.count
+								font-size:10px
+								margin-left:5px
+								font-weight:400
+								color:#aaa	
+					.rightSetting
+						position:absolute
+						top:0
+						right:0
+						height:42px
+						width:auto
+						font-size:0
+						padding:0 10px
+						&:active
+							background:$list_active
+						i
+							height:42px
+							width:42px
+							line-height:42px
+							text-align:center
+							font-size:16px
+							margin-right:2px
+							vertical-align:middle
+							color:#666
+						span
+							display:inline-block
+							vertical-align:middle
+							font-size:12px
+							color:#666
 
 
 
