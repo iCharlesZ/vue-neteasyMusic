@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/zhchi': {
+            target: 'https://www.zhchi.me/works/vuedata/',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/zhchi': ''
+            }
+        }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
