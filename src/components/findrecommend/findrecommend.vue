@@ -119,7 +119,7 @@
 				this.$http.get('/zhchi/neteasyMusic/swiper.json')
 				.then((response) => {
 		        		console.log(response.data)
-		        		// this.items = response.data.items
+		        		this.items = response.data.items
 		        	})
 		        	.catch(function(error){
 		        		console.log(error)
@@ -129,7 +129,16 @@
 		        this.$http.get('/zhchi/neteasyMusic/data.json')
 		        	.then((response) => {
 		        		console.log(response.data)
-		        		// this.listNum = response.data.listNum
+		        		this.listNum = response.data.listNum
+		        	})
+		        	.catch(function(error){
+		        		console.log(error)
+		        	})
+		    },
+		    getIoliuTest(){
+		    	this.$http.get('https://bird.ioliu.cn/v1/?url=http://music.163.com/api/playlist/detail?id=19723756')
+		    		.then((response) => {
+		        		console.log(response.data)
 		        	})
 		        	.catch(function(error){
 		        		console.log(error)
@@ -143,8 +152,9 @@
             findsheetlist
         },
         mounted() {
-		    this.getRecmdJson()
-		    this.getSwiperJson()
+		    // this.getRecmdJson()
+		    // this.getSwiperJson()
+		    this.getIoliuTest()
 		}
 	}
 </script>
