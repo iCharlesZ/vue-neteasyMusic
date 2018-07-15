@@ -1,5 +1,5 @@
 <template>
-	<div class="songlists">
+	<div class="songlists" @click="showMusicDetail">
 		<div class="songlist">
 			<div class="warpper">
 				<div class="listIndex">
@@ -19,8 +19,20 @@
 </template>
 
 <script>
-	export default {
+	import store from './../../store'
 
+	export default {
+		methods: {
+			// 显示播放列表
+			showMusicDetail () {
+				console.log('showMusicDetail')
+				store.commit('play')
+				store.dispatch({
+					type: 'set_MusicDetail',
+					isShow: true
+				})
+			}
+		},
 	}
 </script>
 
