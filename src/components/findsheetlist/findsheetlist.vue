@@ -1,5 +1,5 @@
 <template>
-	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}">
+	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}" @click.stop="showSongSheet(showSongSheetId)">
 		<div class="content">
 			 <div class="image" :style="{ backgroundImage : 'url('+imagesrc+')',backgroundSize:'cover', backgroundPosition:'center'}"></div>
 		</div>
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+	import store from '../../store'
+	
 	export default {
 		props: {
 			listpadding: {
@@ -26,6 +28,18 @@
 			},
 			listwidth: {
 				type: String
+			},
+			showSongSheetId: {
+				type: Number
+			}
+		},
+		methods: {
+			showSongSheet (id) {
+				console.log(id)
+				store.commit({
+					type: 'setIsShowSongSheet',
+					isShow: true
+				})
 			}
 		}
 	}

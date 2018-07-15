@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <audio 
+      id="myaudio" 
+      ref="audio"
+      @playing="musicOnPlaying"
+      @pause="musicOnPause"></audio>
   	<v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <bottom-bar></bottom-bar>
@@ -23,12 +28,37 @@ export default {
       info: {}
     }
   },
+  methods: {
+    // 音乐处于播放状态
+    musicOnPlaying () {
+      store.commit('play')
+    },
+    // 音乐处于暂停状态
+    musicOnPause () {
+      store.commit('pause')
+    }
+  },
   components: {
   	'v-header': header,
     'side-bar': sidebar,
     'bottom-bar': bottombar,
     'song-sheet': songsheet,
     'music-detail': musicdetail
+  },
+  created () {
+    this.$http.get('https://bird.ioliu.cn/netease/song?id=28038056')
+      .then((res) => {
+
+        // 设置音乐的地址  初始化 根据vuex的currentIndex来决定
+        this.$refs.audio.setAttribute('src', res.data.data.mp3.url)
+
+        // 给audio元素存在vuex 的state里面  方便日后调用
+        store.dispatch('set_AudioElement', this.$refs.audio)
+
+      })
+      .catch(function(error){
+        console.log(error)
+      })
   }
 }
 </script>

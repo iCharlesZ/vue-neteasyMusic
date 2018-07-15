@@ -14,16 +14,20 @@ const audioInfo = {
 		// play设置
 		play (state) {
 			state.playing = true
+			state.audioelement.play()
 		},
 		// 暂停设置
 		pause (state) {
 			state.playing = false
+			state.audioelement.pause()
 		},
 		togglePlay (state) {
 			if (state.playing) {
 				state.playing = false
+				state.audioelement.pause()
 			} else {
 				state.playing = true
+				state.audioelement.play()
 			}
 		},
 		// 设置是否显示歌单信息
@@ -34,12 +38,19 @@ const audioInfo = {
 		toggerMusicDetail (state) {
 			state.showMusicDetail = !state.showMusicDetail
 		},
+		// 获取音乐元素 Dom
+		setAudioElement (state, ele) {
+			state.audioelement = ele
+		},
 		// 关闭底部列表
 		setMusicDetail (state, obj) {
 			state.showMusicDetail = obj.isShow
 		}
 	},
 	actions: {
+		set_AudioElement ({commit}, ele) {
+			commit('setAudioElement', ele)
+		},
 		set_MusicDetail ({commit}, obj) {
 			commit('setMusicDetail', obj)
 		}

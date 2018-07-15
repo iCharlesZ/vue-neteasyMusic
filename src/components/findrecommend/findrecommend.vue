@@ -24,7 +24,7 @@
         	</div>
         </div>
         <findsheettitle></findsheettitle>
-        <div class="recommend-list" @click="showSongSheet">
+        <div class="recommend-list">
         	<findsheetlist 
         		v-for="(sheet, index) of listNum"
         		:key="sheet.id" 
@@ -33,6 +33,7 @@
         		:listpadding="padding"
         		:showbottomtitle="sheet.showbottomtitle" 
         		:bottomtitle="sheet.bottomtitle"
+        		:showSongSheetId="sheet.id"
         		></findsheetlist>
         </div>
 	</div>
@@ -108,13 +109,6 @@
 			}
 		},
 		methods: {
-			showSongSheet () {
-				console.log('showSongSheet')
-				store.commit({
-					type: 'setIsShowSongSheet',
-					isShow: true
-				})
-			},
 			getSwiperJson() {
 				this.$http.get('/zhchi/neteasyMusic/swiper.json')
 				.then((response) => {
