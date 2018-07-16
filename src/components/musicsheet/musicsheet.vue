@@ -10,7 +10,7 @@
 		</div>
 		<div v-for="(item, index) in data_list" @click.stop="showSongSheet(item)">
 			<div class="content">
-				<img class="sheetimg" alt="" :src="item.imgsrc">
+				<img class="sheetimg" alt="" :src="item.coverImgUrl">
 				<div class="detail">
 					<p class="name">{{item.name}}</p>
 					<p class="count">{{item.count}} 首歌曲</p>

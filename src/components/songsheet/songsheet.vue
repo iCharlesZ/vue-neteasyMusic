@@ -11,14 +11,14 @@
 				<div class="top" ref="top">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
-							<img :src="getSongSheet.imgsrc">
+							<img :src="getSongSheet.playlist.coverImgUrl">
 							<span class="info">i</span>
 						</div>
 						<div class="disc">
-							<p class="songsheetname">{{getSongSheet.name}}</p>
+							<p class="songsheetname">{{getSongSheet.playlist.name}}</p>
 							<div class="user">
-								<img  class="avatar" src="../../assets/images/headImg.jpg" alt="">
-								<p class="songsheetuser">zhchi</p>
+								<img  class="avatar" :src="getSongSheet.playlist.creator.avatarUrl" alt="">
+								<p class="songsheetuser">{{getSongSheet.playlist.creator.nickname}}</p>
 								<i class="icon-right"></i>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 						<div class="info">
 							<i class="icon-music"></i>
 							<span class="name">播放全部</span>
-							<span class="count">(共{{getSongSheet.count}}首)</span>
+							<span class="count">(共{{getSongSheet.playlist.trackCount}}首)</span>
 						</div>
 						<div class="rightSetting">
 							<i class="icon-menu"></i>
@@ -71,7 +71,9 @@
 	export default{
 		data() {
 			return {
-				sheetData: {}
+				sheetData: {
+					
+				}
 			}
 		},
 		props: {

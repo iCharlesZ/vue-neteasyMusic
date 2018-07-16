@@ -1,15 +1,15 @@
 <template>
 	<div class="songlists">
 		<!-- <div class="songlist" v-for="(item, index) in getSongSheetInfo"  @click="playIndex(item.url)"> -->
-		<div class="songlist"  v-if="getSongSheet.info" v-for="(item, index) in getSongSheet.info" @click="playIndex(item.url)">
+		<div class="songlist" v-if="getSongSheet.playlist" v-for="(item, index) in getSongSheet.playlist.tracks" @click="playIndex(item.id)">
 			<div class="warpper">
 				<div class="listIndex">
 					<span class="index">{{index + 1}}</span>
 				</div>
 				<div class="songInfo">
 					<div class="detail">
-						<p class="name">{{getSongSheet.info[index].name}}</p>
-						<p class="singer">{{getSongSheet.info[index].singer}}</p>
+						<p class="name">{{getSongSheet.playlist.tracks[index].name}}</p>
+						<p class="singer">{{getSongSheet.playlist.tracks[index].ar[0].name}}</p>
 					</div>
 					<div class="border-1px"></div>
 				</div>
@@ -25,19 +25,15 @@
 	export default {
 		data() {
 			return {
-				/*getSongSheetInfo: [
-					{id:28038056, name: "不醉不会", singer: "田馥甄", "url": "https://bird.ioliu.cn/netease/song?id=28038056"},
-					{id:41500546, name: "China-X", singer: "徐梦圆", "url": "https://bird.ioliu.cn/netease/song?id=41500546"}
-				]*/
+				
 			}
 		},
 		methods: {
 			// 显示播放列表
-			playIndex (info) {
-				this.$http.get(info)
+			playIndex (id) {
+				this.$http.get('https://bird.ioliu.cn/netease/song?id=' + id)
 					.then((res) => {
-						// console.log(res.data.data)
-
+						// console.log(res.data.data.mp3.url)
 						store.dispatch({
 							type: 'set_MusicDetail',
 							isShow: true
@@ -51,10 +47,11 @@
 							url: res.data.data.mp3.url
 						})
 						store.commit('play')
+
 					})
 					.catch(function(error){
 				        console.log(error)
-				    })	
+				    })
 			}
 		},
 		computed: {

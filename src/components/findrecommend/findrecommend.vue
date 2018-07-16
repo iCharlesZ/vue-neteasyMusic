@@ -64,7 +64,7 @@
 						delay: 3000,
 						disableOnInteraction: false
 					},
-					loop: true,
+					loop: true
 				}
 			}
 		},
@@ -85,7 +85,6 @@
 		        	})*/
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
 				.then((response) => {
-		        		console.log(response.data)
 		        		this.items = response.data.items
 		        	})
 		        	.catch(function(error){
@@ -103,17 +102,7 @@
 		        	})*/
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
 		        	.then((response) => {
-		        		console.log(response.data)
 		        		this.listNum = response.data.listNum
-		        	})
-		        	.catch(function(error){
-		        		console.log(error)
-		        	})
-		    },
-		    getIoliuTest(){
-		    	this.$http.get('https://bird.ioliu.cn/v1/?url=http://music.163.com/api/playlist/detail?id=19723756')
-		    		.then((response) => {
-		        		console.log(response.data)
 		        	})
 		        	.catch(function(error){
 		        		console.log(error)
@@ -129,7 +118,6 @@
         mounted() {
 		    this.getRecmdJson()
 		    this.getSwiperJson()
-		    // this.getIoliuTest()
 		}
 	}
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}" ><!-- @click.stop="showSongSheet(showSongSheetId)" -->
+	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}"  @click.stop="showSongSheet(showSongSheetId)"><!-- @click.stop="showSongSheet(showSongSheetId)" -->
 		<div class="content">
 			 <div class="image" :style="{ backgroundImage : 'url('+imagesrc+')',backgroundSize:'cover', backgroundPosition:'center'}"></div>
 		</div>
@@ -33,13 +33,30 @@
 				type: Number
 			}
 		},
+		data() {
+			return {
+				data_list: []
+			}
+		},
 		methods: {
 			showSongSheet (id) {
-				console.log(id)
-				store.commit({
-					type: 'setIsShowSongSheet',
-					isShow: true
-				})
+				this.$http.get('https://bird.ioliu.cn/netease/playlist?id=' + id)
+		        	.then((res) => {
+		        		console.log(res.data)
+
+		        		store.dispatch({
+							type: 'set_MusicSheetList',
+							data: res.data
+						})
+						store.commit({
+							type: 'setIsShowSongSheet',
+							isShow: true
+						})
+						
+		        	})
+		        	.catch(function(error){
+		        		console.log(error)
+		        	})
 			}
 		}
 	}
