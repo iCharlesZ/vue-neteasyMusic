@@ -1,14 +1,14 @@
 <template>
 	<transition name="sliderUpHideRight">
 		<div class="musicdetail" v-show="isShowMusicDetail">
-			<div class="filterbg" :style="{backgroundImage : 'url('+ filterbg +')', backgroundSize : 'cover', backgroundPosition : 'center center'}">
+			<div class="filterbg" :style="{backgroundImage : 'url('+ getMusicList.al.picUrl +')', backgroundSize : 'cover', backgroundPosition : 'center center'}">
 			</div>
 			<div class="detailcontent">
 				<div class="content-header">
 					<i class="back icon-back" @click="hideMusicDetail"></i>
 					<div class="musicTopDetail">
-						<p class="name">不醉不会</p>
-						<p class="singer">田馥甄</p>
+						<p class="name">{{getMusicList.name}}</p>
+						<p class="singer">{{getMusicList.ar[0].name}}</p>
 					</div>
 					<i class="share icon-share"></i>
 				</div>
@@ -20,7 +20,7 @@
 						<div class="cd-content" ref="cdcontent">
 							<div class="wrapper" ref="cd" :class="isPlaying ? 'animate ' : ''">
 								<div class="cd-bg"></div>
-								<img class="img" src="../../assets/images/tianfuzhen.jpg">
+								<img class="img" :src="getMusicList.al.picUrl">
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,16 @@
 			return {
 				isPlay: false,
 				filterbg: filterbg,
-				showCD: true
+				showCD: true,
+				getMusicList: {
+					name: "不醉不会",
+					ar: [
+						{name: "田馥甄"}
+					],
+					al: {
+						picUrl: "http://p1.music.126.net/2i22n90QwyExuHYRJwCc7A==/109951163298361970.jpg"
+					}
+				}
 			}
 		},
 		methods: {
@@ -74,6 +83,9 @@
 		},
 		computed: {
 			isShowMusicDetail () {
+				if (this.$store.getters.getMusicList.name) {
+					this.getMusicList = this.$store.getters.getMusicList
+				}
 				return this.$store.getters.getMusicDetail
 			},
 			isPlaying () {
@@ -88,6 +100,8 @@
 					let contentTrans = getComputedStyle(this.$refs.cdcontent).transform
 					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
 				}
+
+				
 			}
 		},
 		components: {

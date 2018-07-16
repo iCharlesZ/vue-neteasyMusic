@@ -7,6 +7,10 @@ const audioInfo = {
 		showMusicDetail: false,
 		// 是否显示歌单列表
 		showSongSheet: false,
+		// 全部音乐信息  包括歌单等等
+		musicAllList: [],
+		// 音乐播放信息
+		musicList: [],
 		// 是否正在播放
 		playing: false
 	},
@@ -45,6 +49,13 @@ const audioInfo = {
 		// 关闭底部列表
 		setMusicDetail (state, obj) {
 			state.showMusicDetail = obj.isShow
+		},
+		// 插入播放列表信息
+		setMusicList (state, obj) {
+			state.musicList = obj.data
+		},
+		playIndex (state, obj) {
+			state.audioelement.setAttribute('src', obj.url)
 		}
 	},
 	actions: {
@@ -61,7 +72,9 @@ const audioInfo = {
 		// 获取音乐是否打开底部音乐列表
 		getMusicDetail: state => state.showMusicDetail,
 		// 获取音乐是否播放
-		getIsPlaying: state => state.playing
+		getIsPlaying: state => state.playing,
+		// 获取音乐播放列表信息
+		getMusicList: state => state.musicList
 	}
 }
 export default audioInfo

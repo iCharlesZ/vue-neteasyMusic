@@ -1,10 +1,10 @@
 <template>
 	<div class="bottom-bar" @click="showMusicDetail">
 		<div class="music-info">
-			<img class="music-pic" src="../../assets/images/tianfuzhen.jpg">
+			<img class="music-pic" :src="musicImage">
 			<div class="music-detail">
-				<p class="music-name">不醉不会</p>
-				<p class="music-singer">田馥甄</p>
+				<p class="music-name" v-if="musicName">{{musicName}}</p>
+				<p class="music-singer" v-if="musicSinger">{{musicSinger}}</p>
 			</div>
 		</div>
 		<div class="playpause" @click.stop="playpause">
@@ -45,6 +45,18 @@
 		computed: {
 			iconPlayPause () {
 				return this.audioInfo.playing
+			},
+			// 获取音乐名称
+			musicName () {
+				return this.$store.getters.getMusicList.name ? this.$store.getters.getMusicList.name : '不醉不会'
+			},
+			// 获取歌手名称
+			musicSinger () {
+				return this.$store.getters.getMusicList.name ? this.$store.getters.getMusicList.ar[0].name : '田馥甄'
+			},
+			// 获取音乐封面地址
+			musicImage () {
+				return this.$store.getters.getMusicList.name ? this.$store.getters.getMusicList.al.picUrl : 'http://p1.music.126.net/2i22n90QwyExuHYRJwCc7A==/109951163298361970.jpg'
 			}
 		},
 		mounted () {

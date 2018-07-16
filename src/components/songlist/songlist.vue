@@ -1,14 +1,14 @@
 <template>
-	<div class="songlists" @click="showMusicDetail">
-		<div class="songlist">
+	<div class="songlists">
+		<div class="songlist" v-for="(item, index) in getSongSheetInfo"  @click="playIndex(item.url)">
 			<div class="warpper">
 				<div class="listIndex">
-					<span class="index">1</span>
+					<span class="index">{{index + 1}}</span>
 				</div>
 				<div class="songInfo">
 					<div class="detail">
-						<p class="name">不醉不会</p>
-						<p class="singer">田馥甄</p>
+						<p class="name">{{item.name}}</p>
+						<p class="singer">{{item.singer}}</p>
 					</div>
 					<div class="border-1px"></div>
 				</div>
@@ -22,17 +22,40 @@
 	import store from './../../store'
 
 	export default {
-		methods: {
-			// 显示播放列表
-			showMusicDetail () {
-				console.log('showMusicDetail')
-				store.commit('play')
-				store.dispatch({
-					type: 'set_MusicDetail',
-					isShow: true
-				})
+		data() {
+			return {
+				getSongSheetInfo: [
+					{id:28038056, name: "不醉不会", singer: "田馥甄", "url": "https://bird.ioliu.cn/netease/song?id=28038056"},
+					{id:41500546, name: "China-X", singer: "徐梦圆", "url": "https://bird.ioliu.cn/netease/song?id=41500546"}
+				]
 			}
 		},
+		methods: {
+			// 显示播放列表
+			playIndex (info) {
+				this.$http.get(info)
+					.then((res) => {
+						// console.log(res.data.data)
+
+						store.dispatch({
+							type: 'set_MusicDetail',
+							isShow: true
+						})
+						store.commit({
+							type: 'setMusicList',
+							data: res.data.data
+						})
+						store.commit({
+							type: 'playIndex',
+							url: res.data.data.mp3.url
+						})
+						store.commit('play')
+					})
+					.catch(function(error){
+				        console.log(error)
+				    })	
+			}
+		}
 	}
 </script>
 
