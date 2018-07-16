@@ -8,12 +8,12 @@
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
-		<div @click.stop="showSongSheet">
+		<div v-for="(item, index) in data_list" @click.stop="showSongSheet">
 			<div class="content">
-				<img class="sheetimg" alt="" src="../../assets/images/tianfuzhen.jpg">
+				<img class="sheetimg" alt="" :src="item.imgsrc">
 				<div class="detail">
-					<p class="name">我喜欢的音乐</p>
-					<p class="count">1首歌曲</p>
+					<p class="name">{{item.name}}</p>
+					<p class="count">{{item.count}} 首歌曲</p>
 					<i class="setting icon-list-circle" @click.stop="showMenu"></i>
 				</div>
 			</div>
@@ -32,7 +32,11 @@
 			return {
 				isShow: false,
 				showDownloadImage: false,
-				sheetData: {}
+				sheetData: {},
+				data_list: [
+					{name: "我喜欢的音乐", count: 2, imgsrc: "http://p1.music.126.net/2i22n90QwyExuHYRJwCc7A==/109951163298361970.jpg"},
+					{name: "屎A喜欢的音乐", count: 3, imgsrc: "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/shit.jpg"}
+				]
 			}
 		},
 		methods: {
