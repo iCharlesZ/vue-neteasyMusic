@@ -102,7 +102,15 @@
 		        	})*/
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
 		        	.then((response) => {
-		        		this.listNum = response.data.listNum
+		        		let result = [];
+		        		let count = response.data.listNum.length;
+		        		for (let i = 0; i < 6; i++) {
+						    let index = ~~(Math.random() * count) + i;
+						    result[i] = response.data.listNum[index];
+						    response.data.listNum[index] = response.data.listNum[i];
+						    count--;
+						}
+		        		this.listNum = result
 		        	})
 		        	.catch(function(error){
 		        		console.log(error)
