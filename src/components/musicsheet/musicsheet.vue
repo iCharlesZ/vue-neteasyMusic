@@ -4,16 +4,16 @@
 			<i class="toggle icon-down" ref="toggleicon"></i>
 			<div class="detail">
 				<span class="name">我创建的歌单</span>
-				<span class="count">(2)</span>
+				<span class="count">(1)</span>
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
 		<div v-for="(item, index) in data_list" @click.stop="showSongSheet(item)">
 			<div class="content">
-				<img class="sheetimg" alt="" :src="item.coverImgUrl">
+				<img class="sheetimg" alt="" :src="item.playlist.coverImgUrl">
 				<div class="detail">
-					<p class="name">{{item.name}}</p>
-					<p class="count">{{item.count}} 首歌曲</p>
+					<p class="name">{{item.playlist.name}}</p>
+					<p class="count">{{item.playlist.trackCount}} 首歌曲</p>
 					<i class="setting icon-list-circle" @click.stop="showMenu"></i>
 				</div>
 			</div>
@@ -38,6 +38,7 @@
 		},
 		methods: {
 			showSongSheet (data) {
+				// console.log(data)
 				store.dispatch({
 					type: 'set_MusicSheetList',
 					data: data
@@ -48,7 +49,6 @@
 				})
 			},
 			showMenu () {
-				// console.log('showMenu')
 				store.dispatch({
 					type: 'showMenuList'
 				})
@@ -56,8 +56,7 @@
 			createSongSheet() {
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
 		        	.then((response) => {
-		        		// console.log(response)
-		        		this.data_list = response.data.createSongSheet
+		        		this.data_list = response.data
 		        	})
 		        	.catch(function(error){
 		        		console.log(error)

@@ -1,15 +1,14 @@
 <template>
-	<div class="songlists">
-		<!-- <div class="songlist" v-for="(item, index) in getSongSheetInfo"  @click="playIndex(item.url)"> -->
-		<div class="songlist" v-if="getSongSheet.playlist" v-for="(item, index) in getSongSheet.playlist.tracks" @click="playIndex(item.id)">
+	<div class="songlists" v-if="getSongSheet.playlist">
+		<div class="songlist" v-for="(item, index) in getSongSheet.playlist.tracks" @click="playIndex(item.id)">
 			<div class="warpper">
 				<div class="listIndex">
 					<span class="index">{{index + 1}}</span>
 				</div>
 				<div class="songInfo">
 					<div class="detail">
-						<p class="name">{{getSongSheet.playlist.tracks[index].name}}</p>
-						<p class="singer">{{getSongSheet.playlist.tracks[index].ar[0].name}}</p>
+						<p v-if="getSongSheet.playlist" class="name">{{getSongSheet.playlist.tracks[index].name}}</p>
+						<p v-if="getSongSheet.playlist" class="singer">{{getSongSheet.playlist.tracks[index].ar[0].name}}</p>
 					</div>
 					<div class="border-1px"></div>
 				</div>

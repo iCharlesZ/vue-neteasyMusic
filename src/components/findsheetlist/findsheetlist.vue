@@ -1,5 +1,5 @@
 <template>
-	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}"  @click.stop="showSongSheet(showSongSheetId)"><!-- @click.stop="showSongSheet(showSongSheetId)" -->
+	<div class="findsheetlist" :style="{width:listwidth,padding:listpadding}"  @click.stop="showSongSheet(showSongSheetId)">
 		<div class="content">
 			 <div class="image" :style="{ backgroundImage : 'url('+imagesrc+')',backgroundSize:'cover', backgroundPosition:'center'}"></div>
 		</div>
@@ -42,7 +42,7 @@
 			showSongSheet (id) {
 				this.$http.get('https://bird.ioliu.cn/netease/playlist?id=' + id)
 		        	.then((res) => {
-		        		console.log(res.data)
+		        		// console.log(res.data)
 
 		        		store.dispatch({
 							type: 'set_MusicSheetList',

@@ -11,14 +11,14 @@
 				<div class="top" ref="top">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
-							<img :src="getSongSheet.playlist.coverImgUrl">
+							<img v-if="getSongSheet.playlist" :src="getSongSheet.playlist.coverImgUrl" alt="">
 							<span class="info">i</span>
 						</div>
 						<div class="disc">
-							<p class="songsheetname">{{getSongSheet.playlist.name}}</p>
+							<p class="songsheetname">我喜欢的音乐</p>
 							<div class="user">
-								<img  class="avatar" :src="getSongSheet.playlist.creator.avatarUrl" alt="">
-								<p class="songsheetuser">{{getSongSheet.playlist.creator.nickname}}</p>
+								<img v-if="getSongSheet.playlist" class="avatar" :src="getSongSheet.playlist.creator.avatarUrl" alt="">
+								<p v-if="getSongSheet.playlist" class="songsheetuser">{{getSongSheet.playlist.creator.nickname}}</p>
 								<i class="icon-right"></i>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 						<div class="info">
 							<i class="icon-music"></i>
 							<span class="name">播放全部</span>
-							<span class="count">(共{{getSongSheet.playlist.trackCount}}首)</span>
+							<span v-if="getSongSheet.playlist" class="count">(共{{getSongSheet.playlist.trackCount}}首)</span>
 						</div>
 						<div class="rightSetting">
 							<i class="icon-menu"></i>
@@ -71,9 +71,8 @@
 	export default{
 		data() {
 			return {
-				sheetData: {
-					
-				}
+				isShow: false,
+				sheetData: {}
 			}
 		},
 		props: {
@@ -93,7 +92,7 @@
 				return this.isShow
 			},
 			getSongSheet () {
-				this.sheetData = this.$store.getters.getMusicSheetList
+				// this.sheetData = this.$store.getters.getMusicSheetList
 				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 			}
 		},
