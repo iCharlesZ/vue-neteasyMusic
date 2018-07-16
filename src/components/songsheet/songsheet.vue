@@ -15,7 +15,7 @@
 							<span class="info">i</span>
 						</div>
 						<div class="disc">
-							<p class="songsheetname">我喜欢的音乐</p>
+							<p v-if="getSongSheet.playlist" class="songsheetname">{{getSongSheet.playlist.name}}</p>
 							<div class="user">
 								<img v-if="getSongSheet.playlist" class="avatar" :src="getSongSheet.playlist.creator.avatarUrl" alt="">
 								<p v-if="getSongSheet.playlist" class="songsheetuser">{{getSongSheet.playlist.creator.nickname}}</p>
