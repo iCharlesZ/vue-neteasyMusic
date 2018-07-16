@@ -12,7 +12,9 @@ const audioInfo = {
 		// 音乐播放信息
 		musicList: [],
 		// 是否正在播放
-		playing: false
+		playing: false,
+		// 音乐歌单信息
+		musicSheetList: []
 	},
 	mutations: {
 		// play设置
@@ -56,6 +58,10 @@ const audioInfo = {
 		},
 		playIndex (state, obj) {
 			state.audioelement.setAttribute('src', obj.url)
+		},
+		// 设置音乐播放器的歌单列表数据
+		setMusicSheetList (state, obj) {
+			state.musicSheetList = obj.data
 		}
 	},
 	actions: {
@@ -64,6 +70,9 @@ const audioInfo = {
 		},
 		set_MusicDetail ({commit}, obj) {
 			commit('setMusicDetail', obj)
+		},
+		set_MusicSheetList ({commit}, obj) {
+			commit('setMusicSheetList', obj)
 		}
 	},
 	getters: {
@@ -74,7 +83,9 @@ const audioInfo = {
 		// 获取音乐是否播放
 		getIsPlaying: state => state.playing,
 		// 获取音乐播放列表信息
-		getMusicList: state => state.musicList
+		getMusicList: state => state.musicList,
+		// 获取歌单信息
+		getMusicSheetList: state => state.musicSheetList
 	}
 }
 export default audioInfo

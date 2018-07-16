@@ -4,11 +4,11 @@
 			<i class="toggle icon-down" ref="toggleicon"></i>
 			<div class="detail">
 				<span class="name">我创建的歌单</span>
-				<span class="count">(1)</span>
+				<span class="count">(2)</span>
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
-		<div v-for="(item, index) in data_list" @click.stop="showSongSheet">
+		<div v-for="(item, index) in data_list" @click.stop="showSongSheet(item)">
 			<div class="content">
 				<img class="sheetimg" alt="" :src="item.imgsrc">
 				<div class="detail">
@@ -33,26 +33,39 @@
 				isShow: false,
 				showDownloadImage: false,
 				sheetData: {},
-				data_list: [
-					{name: "我喜欢的音乐", count: 2, imgsrc: "http://p1.music.126.net/2i22n90QwyExuHYRJwCc7A==/109951163298361970.jpg"},
-					{name: "屎A喜欢的音乐", count: 3, imgsrc: "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/shit.jpg"}
-				]
+				data_list: []
 			}
 		},
 		methods: {
 			showSongSheet (data) {
-				console.log('showSongSheet')
+				store.dispatch({
+					type: 'set_MusicSheetList',
+					data: data
+				})
 				store.commit({
 					type: 'setIsShowSongSheet',
 					isShow: true
 				})
 			},
 			showMenu () {
-				console.log('showMenu')
+				// console.log('showMenu')
 				store.dispatch({
 					type: 'showMenuList'
 				})
-			}
+			},
+			createSongSheet() {
+		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
+		        	.then((response) => {
+		        		// console.log(response)
+		        		this.data_list = response.data.createSongSheet
+		        	})
+		        	.catch(function(error){
+		        		console.log(error)
+		        	})
+		    }
+		},
+		mounted() {
+		    this.createSongSheet()
 		}
 	}
 </script>

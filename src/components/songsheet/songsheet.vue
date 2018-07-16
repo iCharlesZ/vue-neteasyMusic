@@ -11,11 +11,11 @@
 				<div class="top" ref="top">
 					<div class="songsheetdisc">
 						<div class="songsheetimg">
-							<img src="../../assets/images/tianfuzhen.jpg" >
+							<img :src="getSongSheet.imgsrc">
 							<span class="info">i</span>
 						</div>
 						<div class="disc">
-							<p class="songsheetname">我喜欢的音乐</p>
+							<p class="songsheetname">{{getSongSheet.name}}</p>
 							<div class="user">
 								<img  class="avatar" src="../../assets/images/headImg.jpg" alt="">
 								<p class="songsheetuser">zhchi</p>
@@ -47,7 +47,7 @@
 						<div class="info">
 							<i class="icon-music"></i>
 							<span class="name">播放全部</span>
-							<span class="count">(共 1 首)</span>
+							<span class="count">(共{{getSongSheet.count}}首)</span>
 						</div>
 						<div class="rightSetting">
 							<i class="icon-menu"></i>
@@ -69,6 +69,14 @@
 	import bottombar from './../bottombar/bottombar.vue'
 	
 	export default{
+		data() {
+			return {
+				sheetData: {}
+			}
+		},
+		props: {
+
+		},
 		methods: {
 			hideSongSheet () {
 				store.commit({
@@ -81,6 +89,10 @@
 			showSongSheet () {
 				this.isShow = this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
 				return this.isShow
+			},
+			getSongSheet () {
+				this.sheetData = this.$store.getters.getMusicSheetList
+				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
 			}
 		},
 		components: {

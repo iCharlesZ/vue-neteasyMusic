@@ -53,43 +53,8 @@
 				listwidth: "33.3%",
 				padding: "0.5%", 
 				showbottomtitle: true,
-				listNum: [
-					{
-						"id": 1, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum1.jpg", 
-						"bottomtitle": "甜味摇滚丨温柔在耳边凝成絮语"
-					},
-					{
-						"id": 2, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum2.jpg", 
-						"bottomtitle": "我多想再见你，哪怕匆匆一眼就别离"
-					},
-					{
-						"id": 3, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum3.jpg", 
-						"bottomtitle": "当三首情歌遇上一个伤感的故事"
-					},
-					{
-						"id": 4, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum4.jpg", 
-						"bottomtitle": "盘尼西林&落日飞车"
-					},
-					{
-						"id": 5, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum5.jpg", 
-						"bottomtitle": "欧美治愈|决定转身的时候就不要频频回头"
-					},
-					{
-						"id": 6, 
-						"imgsrc": "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/listNum6.jpg", 
-						"bottomtitle": "慢慢喜欢你-陈一发儿"
-					}
-				],
-				items:[
-					"https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/swiper/taylor-swift.jpg",
-					"https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/swiper/xusong.jpg",
-					"https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/swiper/linjunjie.jpg"
-				],
+				listNum: [],
+				items:[],
 				swiperOption: {
 					pagination: {
 						el: '.swiper-pagination',
@@ -110,7 +75,15 @@
 		},
 		methods: {
 			getSwiperJson() {
-				this.$http.get('/zhchi/neteasyMusic/swiper.json')
+				/*this.$http.get('/zhchi/neteasyMusic/swiper.json')
+				.then((response) => {
+		        		console.log(response.data)
+		        		this.items = response.data.items
+		        	})
+		        	.catch(function(error){
+		        		console.log(error)
+		        	})*/
+		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
 				.then((response) => {
 		        		console.log(response.data)
 		        		this.items = response.data.items
@@ -120,7 +93,15 @@
 		        	})
 			},
 			getRecmdJson() {
-		        this.$http.get('/zhchi/neteasyMusic/data.json')
+		        /*this.$http.get('/zhchi/neteasyMusic/data.json')
+		        	.then((response) => {
+		        		console.log(response.data)
+		        		this.listNum = response.data.listNum
+		        	})
+		        	.catch(function(error){
+		        		console.log(error)
+		        	})*/
+		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
 		        	.then((response) => {
 		        		console.log(response.data)
 		        		this.listNum = response.data.listNum
@@ -146,9 +127,9 @@
             findsheetlist
         },
         mounted() {
-		    // this.getRecmdJson()
-		    // this.getSwiperJson()
-		    this.getIoliuTest()
+		    this.getRecmdJson()
+		    this.getSwiperJson()
+		    // this.getIoliuTest()
 		}
 	}
 </script>
