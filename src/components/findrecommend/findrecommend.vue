@@ -40,11 +40,11 @@
 </template>
 
 <script>
-	import store from '../../store'
 	import 'swiper/dist/css/swiper.css'
+	import { swiper, swiperSlide } from 'vue-awesome-swiper'
+	import store from '../../store'
 	import findsheettitle from '../findsheettitle/findsheettitle'
 	import findsheetlist from '../findsheetlist/findsheetlist'
-	import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 
 	export default{
@@ -62,9 +62,12 @@
 					},
 					autoplay: {
 						delay: 3000,
+						stopOnLastSlide: false,
 						disableOnInteraction: false
 					},
-					loop: true
+					loop: true,
+					observer:true,			//修改swiper自己或子元素时，自动初始化swiper
+          			observeParents:true		//修改swiper的父元素时，自动初始化swiper
 				}
 			}
 		},

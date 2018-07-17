@@ -1,11 +1,12 @@
 <template>
 	<transition name="sliderUpHideRight">
-		<div class="songsheet" ref="songsheet" v-show="showSongSheet">
+		<div class="songsheet" ref="songsheet" v-show="showSongSheet" @scroll="scrollEvent">
 			<div class="songheader">
 				<i class="back icon-back" @click.stop="hideSongSheet"></i>
 				<p class="title">歌单</p>
 				<i class="search icon-search"></i>
 				<i class="menu icon-list-circle"></i>
+				<div class="songheaderimg" ref="songheader"></div>
 			</div>
 			<div class="content">
 				<div class="top" ref="top">
@@ -84,6 +85,16 @@
 					type: 'setIsShowSongSheet',
 					isShow: false
 				})
+			},
+			scrollEvent () {
+				let opacity = this.$refs.songsheet.scrollTop / (this.$refs.top.offsetHeight - this.$refs.songheader.offsetHeight)
+				if (this.$refs.songsheet.scrollTop < this.$refs.top.offsetHeight - this.$refs.songheader.offsetHeight) {
+					this.$refs.songheader.style.opacity = opacity
+					this.$refs.songheader.style.filter = `alpha(opacity: ${opacity * 100})`
+				} else {
+					this.$refs.songheader.style.opacity = 1
+					this.$refs.songheader.style.filter = `alpha(opacity: ${100})`
+				}
 			}
 		},
 		computed: {
@@ -94,6 +105,21 @@
 			getSongSheet () {
 				// this.sheetData = this.$store.getters.getMusicSheetList
 				return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+			}
+		},
+		watch: {
+			isShow: function (newisshwo, oldisshow) {
+				this.$refs.songsheet.scrollTop = 0
+				let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList.playlist.coverImgUrl : ''
+				console.log(img)
+				if (newisshwo) {
+					this.$refs.top.style.backgroundImage = `url(${img})`
+					this.$refs.top.style.backgroundSize = `5800%`
+					this.$refs.top.style.backgroundPosition = `center center`
+					this.$refs.songheader.style.backgroundImage = `url(${img})`
+					this.$refs.songheader.style.backgroundSize = `5800%`
+					this.$refs.songheader.style.backgroundPosition = `center center`
+				}
 			}
 		},
 		components: {
@@ -126,7 +152,15 @@
 			display:flex
 			align-items:center
 			padding:0 10px
-			background: #C62F2F
+
+			.songheaderimg
+				position:absolute
+				top:0
+				left:0
+				right:0
+				bottom:0
+				z-index: -1;
+				opacity:0
 			i
 				flex:0 0 36px
 				width:36px
@@ -154,7 +188,7 @@
 			box-sizing:border-box
 			.top
 				height:155px
-				background:#422222
+				background:#000
 				padding:70px 25px 20px 25px
 				.songsheetdisc
 					height:100px
