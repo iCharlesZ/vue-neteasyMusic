@@ -18,6 +18,6 @@ npm run build
 npm run build --report
 ```
 
-demo:https://zhchi-me.github.io/vue-neteasyMusic/dist/index.html
+demo：https://zhchi-me.github.io/vue-neteasyMusic/dist/index.html
 
 打包好的app：https://zhchi-me.github.io/vue-neteasyMusic/dist/APP.apk
