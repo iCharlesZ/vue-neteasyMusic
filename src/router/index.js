@@ -17,7 +17,10 @@ export default new Router({
     },
     {
       	path: '/mymusic',
-      	component: MyMusic
+      	component: MyMusic,
+        meta: {
+          keepAlive: true
+        }
     },
     {
 		    path: '/findmusic',
@@ -29,7 +32,10 @@ export default new Router({
           },
           {
               path: '/findmusic/findrecommend',
-              component: Findrecommend
+              component: Findrecommend,
+              meta: {
+                keepAlive: true
+              }
           },
           {
               path: '/findmusic/findsheet',
@@ -39,7 +45,10 @@ export default new Router({
               path: '/findmusic/findradio',
               component: Findradio
           }
-        ]
+        ],
+        meta: {
+          keepAlive: true
+        }
     },
     {
         path: '/community',

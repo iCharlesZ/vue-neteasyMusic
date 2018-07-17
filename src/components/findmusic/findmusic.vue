@@ -11,7 +11,11 @@
 				<div class="menu-list-div">电台</div>
 			</router-link>
 		</div>
-		<router-view></router-view>
+		<!-- <router-view></router-view> -->
+		<keep-alive>
+		    <router-view v-if="$route.meta.keepAlive"></router-view>
+		</keep-alive>
+		<router-view v-if="!$route.meta.keepAlive"></router-view>
 	</div>
 </template>
 
