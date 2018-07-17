@@ -78,15 +78,8 @@
 		},
 		methods: {
 			getSwiperJson() {
-				/*this.$http.get('/zhchi/neteasyMusic/swiper.json')
-				.then((response) => {
-		        		console.log(response.data)
-		        		this.items = response.data.items
-		        	})
-		        	.catch(function(error){
-		        		console.log(error)
-		        	})*/
-		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
+		        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
+		        this.$http.get('https://bird.ioliu.cn/v1?url=http://www.ugmax.cn/vuedata/swiper.json')
 				.then((response) => {
 		        		this.items = response.data.items
 		        	})
@@ -95,15 +88,8 @@
 		        	})
 			},
 			getRecmdJson() {
-		        /*this.$http.get('/zhchi/neteasyMusic/data.json')
-		        	.then((response) => {
-		        		console.log(response.data)
-		        		this.listNum = response.data.listNum
-		        	})
-		        	.catch(function(error){
-		        		console.log(error)
-		        	})*/
-		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
+		        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
+		        this.$http.get('https://bird.ioliu.cn/v1?url=http://www.ugmax.cn/vuedata/recmdList.json')
 		        	.then((response) => {
 		        		let result = [];
 		        		let count = response.data.listNum.length;

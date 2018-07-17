@@ -54,7 +54,8 @@
 				})
 			},
 			createSongSheet() {
-		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
+		        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
+		        this.$http.get('http://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
 		        	.then((response) => {
 		        		this.data_list = response.data
 		        	})

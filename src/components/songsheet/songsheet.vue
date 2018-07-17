@@ -111,7 +111,6 @@
 			isShow: function (newisshwo, oldisshow) {
 				this.$refs.songsheet.scrollTop = 0
 				let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList.playlist.coverImgUrl : ''
-				console.log(img)
 				if (newisshwo) {
 					this.$refs.top.style.backgroundImage = `url(${img})`
 					this.$refs.top.style.backgroundSize = `5800%`
