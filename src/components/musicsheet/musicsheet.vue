@@ -1,14 +1,14 @@
 <template>
 	<div class="musicsheet">
-		<div class="title">
+		<div class="title" @click="toggleSheets($event)">
 			<i class="toggle icon-down" ref="toggleicon"></i>
 			<div class="detail">
-				<span class="name">我创建的歌单</span>
-				<span class="count">(1)</span>
+				<span class="name">{{data_item.name}}</span>
+				<span v-if="data_item.list" class="count">({{data_item.list.length}})</span>
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
-		<div v-for="(item, index) in data_list" @click.stop="showSongSheet(item)">
+		<div v-show="showSheets" v-for="(item, index) in data_item.list" @click.stop="showSongSheet(item)">
 			<div class="content">
 				<img class="sheetimg" alt="" :src="item.playlist.coverImgUrl">
 				<div class="detail">
@@ -26,17 +26,30 @@
 
 	export default{
 		props: {
-
+			item: {
+				type: Object
+			},
+			index: {
+				type: Number
+			}
 		},
 		data () {
 			return {
 				isShow: false,
 				showDownloadImage: false,
 				sheetData: {},
-				data_list: []
+				data_list: [],
+				showSheets: true,
+				data_item: {},
+				data_index: {}
 			}
 		},
 		methods: {
+			toggleSheets (event) {
+				console.log('toggleSheets')
+				this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) translate3d(50%, 0, 0)' : 'rotate(0) translate3d(0, -50%, 0)'
+				this.showSheets = !this.showSheets
+			},
 			showSongSheet (data) {
 				// console.log(data)
 				store.dispatch({
@@ -53,7 +66,7 @@
 					type: 'showMenuList'
 				})
 			},
-			createSongSheet() {
+			/*createSongSheet() {
 		        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
 		        this.$http.get('http://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
 		        	.then((response) => {
@@ -62,10 +75,12 @@
 		        	.catch(function(error){
 		        		console.log(error)
 		        	})
-		    }
+		    }*/
 		},
 		mounted() {
-		    this.createSongSheet()
+		    // this.createSongSheet()
+		    this.data_item = this.item
+			this.data_index = this.index
 		}
 	}
 </script>

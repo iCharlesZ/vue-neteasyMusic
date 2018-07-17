@@ -5,7 +5,17 @@
 		</transition>	
 		<transition name="side">
 			<div class="menu-content" v-show="isReallShow">
-				
+				<div class="menu-detail">
+					<div class="menu-userInfo" :style="{ backgroundImage: 'url(' + info.bg + ')',backgroundSize: 'cover' }">
+						<img class="avatar" :src="info.avatar" width="56" height="56">
+						<div class="user-detail">
+							<span class="name">{{info.name}}</span>
+							<img class="isvip" src="../../assets/images/vip.png" alt="">
+							<span class="progress">Lv.{{info.grade}}</span>
+						</div>
+						<span class="sign" @click="signClick"><i v-show="showIcon"  class="icon-coin"></i>{{sign}}</span>
+					</div>
+				</div>
 			</div>
 		</transition>
 	</div>
@@ -15,6 +25,18 @@
 	import store from './../../store'
 
 	export default{
+		data() {
+			return {
+				info: {
+					bg: "http://lsl.image.alimmdn.com/vue/infobg3.jpg",
+					avatar: "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/headImg.jpg",
+					name: 'zhchi',
+					grade: 10
+				},
+				sign: '签到',
+				showIcon: true
+			}
+		},
 		methods: {
 			// 显示菜单
 			hideMenu () {
@@ -22,6 +44,10 @@
 				store.dispatch({
 					type: 'hideSideBar'
 				})
+			},
+			signClick() {
+				this.sign = "已签到"
+				this.showIcon = false
 			}
 		},
 		computed: {
@@ -71,6 +97,58 @@
 				height:168px	
 				position:relative
 				padding:50px 15px 15px 15px
+				.avatar
+					position:absolute
+					bottom:50px
+					left:15px
+					border-radius:50%
+				.user-detail
+					position:absolute
+					bottom:20px
+					left:15px
+					font-size:0
+					.name
+						display:inline-block
+						font-size:16px
+						font-weight:500
+						color:#fff
+						vertical-align:middle
+						max-width:130px
+						text-overflow:ellipsis
+						white-space:nowrap
+						overflow:hidden
+					.isvip
+						width:14px
+						height:14px
+						vertical-align:middle
+						margin-left:6px
+					.progress
+						font-size:8px
+						padding:1px 4px 
+						border-radius:8px
+						color:#fff
+						font-weight:400
+						border:1px solid #fff
+						margin-left:6px
+						vertical-align:middle
+				.sign
+					display:inline-block
+					height:14px
+					line-height:14px
+					position:absolute
+					bottom:15px
+					font-size:12px
+					right:15px
+					padding:4px 8px
+					border:1px solid #e1e1e1
+					border-radius:12px
+					color:#fff
+					&:active
+						background:$rgba_active
+					i
+						height:14px
+						margin-right:5px
+						vertical-align:top
 
 
 </style>

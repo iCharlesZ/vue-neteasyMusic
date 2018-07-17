@@ -5,7 +5,7 @@
 		<list name="下载管理" iconinfo="icon-zuijinplay" count="0"></list>
 		<list name="我的电台" iconinfo="icon-diantai" count="0"></list>
 		<list name="我的收藏" iconinfo="icon-collect" count="0"></list>
-		<musicsheet/>	
+		<musicsheet v-for="(item, index) in items" :item="item" :index="index" :key="index"/>	
 		<menulist/>
 	</div>
 </template>
@@ -18,13 +18,28 @@ import menulist from '../menulist/menulist.vue'
 export default{
 	data(){
 		return{
-			
+			items: []
 		}
+	},
+	methods: {
+		createSongSheet() {
+	        this.$http.get('http://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
+	        	.then((res) => {
+	        		// console.log(res.data)
+	        		this.items = res.data
+	        	})
+	        	.catch(function(error){
+	        		console.log(error)
+	        	})
+	    }
 	},
 	components: {
 		list,
 		musicsheet,
 		menulist
+	},
+	mounted() {
+	    this.createSongSheet()
 	}
 }
 </script>
