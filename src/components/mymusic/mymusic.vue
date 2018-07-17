@@ -23,7 +23,7 @@ export default{
 	},
 	methods: {
 		createSongSheet() {
-	        this.$http.get('http://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
+	        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
 	        	.then((res) => {
 	        		// console.log(res.data)
 	        		this.items = res.data
