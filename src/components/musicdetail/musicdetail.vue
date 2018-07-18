@@ -37,9 +37,9 @@
 					</div>
 					<div class="musicDetailCtrl">
 						<i class="playType icon-music-shunxu"></i>
-						<i class="prev icon-prevdetail"></i>
+						<i class="prev icon-prevdetail" @click.stop="playPrev"></i>
 						<i class="playPause" :class="isPlaying ? 'icon-pause-detail' : 'icon-playdetail' " @click.stop="playPause"></i>
-						<i class="next icon-nextdetail"></i>
+						<i class="next icon-nextdetail" @click.stop="playNext"></i>
 						<i class="menu icon-list-music"></i>
 					</div>
 				</div>
@@ -79,6 +79,12 @@
 			},
 			playPause () {
 				store.commit('togglePlay')
+			},
+			playNext () {
+				
+			},
+			playPrev () {
+				
 			}
 		},
 		computed: {
@@ -100,8 +106,6 @@
 					let contentTrans = getComputedStyle(this.$refs.cdcontent).transform
 					this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
 				}
-
-				
 			}
 		},
 		components: {

@@ -28,7 +28,6 @@
 			}
 		},
 		methods: {
-			// 显示播放列表
 			playIndex (id) {
 				this.$http.get('https://bird.ioliu.cn/netease/song?id=' + id)
 					.then((res) => {

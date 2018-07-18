@@ -9,6 +9,8 @@ const audioInfo = {
 		showSongSheet: false,
 		// 全部音乐信息  包括歌单等等
 		musicAllList: [],
+		// 当前音乐的index索引
+		currentIndex: 0,
 		// 音乐播放信息
 		musicList: [],
 		// 是否正在播放
@@ -72,7 +74,15 @@ const audioInfo = {
 		},
 		setMusicDuration (state, obj) {
 			state.musicDuration = obj.duration
-		}
+		},
+		// 播放下一曲
+		playNext (state) {
+
+		},
+		// 播放上一曲
+		playPrev (state) {
+
+		},
 	},
 	actions: {
 		set_AudioElement ({commit}, ele) {
@@ -89,6 +99,12 @@ const audioInfo = {
 		},
 		set_MusicDuration ({commit}, obj) {
 			commit('setMusicDuration', obj)
+		},
+		play_Next ({commit}) {
+			commit('playNext')
+		},
+		play_Prev ({commit}) {
+			commit('playPrev')
 		}
 	},
 	getters: {

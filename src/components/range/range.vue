@@ -137,10 +137,6 @@
 		display:flex
 		box-sizing:border-box
 		padding:0 10px
-		.rangeicon
-			font-size:14px
-			color:rgba(255,255,255,0.7)
-			margin-right:10px
 		.span-left
 			font-size:12px
 			color:rgba(255,255,255,0.8)
