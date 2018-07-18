@@ -50,7 +50,7 @@
 			},
 			progressBall () {
 				return {
-					'left': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}%)`
+					'left': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}% -7px)`
 				}
 			}
 		},
