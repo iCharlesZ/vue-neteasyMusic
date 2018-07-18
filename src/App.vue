@@ -4,7 +4,9 @@
       id="myaudio" 
       ref="audio"
       @playing="musicOnPlaying"
-      @pause="musicOnPause"></audio>
+      @pause="musicOnPause"
+      @timeupdate="musicTimeUpdate"
+      @canplay="musicCanPlay"></audio>
   	<v-header :index="2"></v-header>
     <side-bar :info="info"></side-bar>
     <bottom-bar></bottom-bar>
@@ -29,6 +31,22 @@ export default {
     }
   },
   methods: {
+    // 可以播放事件
+    musicCanPlay () {
+      // console.log(this.$refs.audio.duration)
+      store.dispatch({
+        type: 'set_MusicDuration',
+        duration: Math.floor(this.$refs.audio.duration)
+      })
+    },
+    // 音乐播放时间更新事件
+    musicTimeUpdate () {
+      // console.log(this.$refs.audio.currentTime)
+      store.dispatch({
+        type: 'set_CurrentTime',
+        time: Math.floor(this.$refs.audio.currentTime)
+      })
+    },
     // 音乐处于播放状态
     musicOnPlaying () {
       store.commit('play')
