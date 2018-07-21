@@ -20,7 +20,7 @@ npm run build --report
 
 demo：https://zhchi-me.github.io/vue-neteasyMusic/dist/index.html
 
-打包好的app：https://zhchi-me.github.io/vue-neteasyMusic/dist/APP.apk
+打包好的app：https://github.com/zhchi-me/vue-neteasyMusic/releases
 
 运行截图：
 ![screenshot](https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/screenshot/screenshot.jpg)
