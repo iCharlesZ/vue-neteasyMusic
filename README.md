@@ -18,7 +18,7 @@ npm run build
 npm run build --report
 ```
 
-demo：https://zhchi-me.github.io/vue-neteasyMusic/dist/index.html
+demo：https://zhchi-me.github.io/vue-neteasyMusic/dist/index.html  (首页第一次请求数据可能有点慢，使用全局代理模式可能会拉取不到网易的图片)
 
 打包好的app：https://zhchi-me.github.io/vue-neteasyMusic/dist/APP.apk
 
