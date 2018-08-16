@@ -1,5 +1,7 @@
 # vue-neteasyMusic
 
+## 由于网易接口变动，暂时无法播放音乐，正在修复(2018-08-16 09:20)
+
 > A Vue.js project
 
 ## Build Setup
