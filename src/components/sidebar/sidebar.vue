@@ -29,7 +29,7 @@
 			return {
 				info: {
 					bg: "http://lsl.image.alimmdn.com/vue/infobg3.jpg",
-					avatar: "https://zhchi-me.github.io/vue-neteasyMusic/src/assets/images/headImg.jpg",
+					avatar: "https://CharlesZhang6.github.io/vue-neteasyMusic/src/assets/images/headImg.jpg",
 					name: 'zhchi',
 					grade: 10
 				},

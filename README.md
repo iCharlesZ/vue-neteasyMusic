@@ -2,7 +2,8 @@
 
 > A Vue.js project
 
-## 由于网易接口变动，暂时无法播放音乐，正在修复(2018-08-16 09:20)
+~~由于网易接口变动，暂时无法播放音乐，正在修复(2018-08-16 09:20)~~
+## 无法播放音乐bug已修复(2020-06-11 21:20)
 
 ## Build Setup
 
@@ -26,4 +27,4 @@ demo(建议使用手机模式访问)：https://CharlesZhang6.github.io/vue-netea
 打包好的app：https://github.com/CharlesZhang6/vue-neteasyMusic/releases
 
 运行截图：
-![screenshot](https://raw.githubusercontent.com/zhchi-me/vue-neteasyMusic/master/src/assets/images/screenshot/screenshot.jpg)
+![screenshot](https://raw.githubusercontent.com/CharlesZhang6/vue-neteasyMusic/master/src/assets/images/screenshot/screenshot.jpg)

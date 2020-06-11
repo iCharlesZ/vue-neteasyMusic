@@ -64,7 +64,7 @@ export default {
     'music-detail': musicdetail
   },
   created () {
-    this.$http.get('https://bird.ioliu.cn/netease/song?id=28038056')
+    this.$http.get('https://bird.ioliu.cn/netease/song?id=28018072')
       .then((res) => {
 
         // 设置音乐的地址  初始化 根据vuex的currentIndex来决定
