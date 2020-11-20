@@ -26,7 +26,7 @@
         <findsheettitle></findsheettitle>
         <div class="recommend-list">
         	<findsheetlist 
-        		v-for="(sheet, index) of listNum"
+        		v-for="(sheet) of listNum"
         		:key="sheet.id" 
         		:imagesrc="sheet.imgsrc" 
         		:listwidth="listwidth"
@@ -79,7 +79,6 @@
 		methods: {
 			getSwiperJson() {
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
-		        // this.$http.get('https://bird.ioliu.cn/v1?url=http://www.ugmax.cn/vuedata/swiper.json')
 				.then((response) => {
 		        		this.items = response.data.items
 		        	})
@@ -89,7 +88,6 @@
 			},
 			getRecmdJson() {
 		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
-		        // this.$http.get('https://bird.ioliu.cn/v1?url=http://www.ugmax.cn/vuedata/recmdList.json')
 		        	.then((response) => {
 		        		let result = [];
 		        		let count = response.data.listNum.length;

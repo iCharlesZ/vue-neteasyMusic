@@ -8,7 +8,7 @@
 				<i class="setting icon-setting"></i>
 			</div>
 		</div>
-		<div v-show="showSheets" v-for="(item, index) in data_item.list" @click.stop="showSongSheet(item)">
+		<div v-show="showSheets" v-for="(item, index) in data_item.list" :key="index" @click.stop="showSongSheet(item)">
 			<div class="content">
 				<img class="sheetimg" alt="" :src="item.playlist.coverImgUrl">
 				<div class="detail">
@@ -65,20 +65,9 @@
 				store.dispatch({
 					type: 'showMenuList'
 				})
-			},
-			/*createSongSheet() {
-		        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
-		        this.$http.get('http://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
-		        	.then((response) => {
-		        		this.data_list = response.data
-		        	})
-		        	.catch(function(error){
-		        		console.log(error)
-		        	})
-		    }*/
+			}
 		},
 		mounted() {
-		    // this.createSongSheet()
 		    this.data_item = this.item
 			this.data_index = this.index
 		}

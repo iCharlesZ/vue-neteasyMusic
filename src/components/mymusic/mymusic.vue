@@ -23,11 +23,8 @@ export default{
 	},
 	methods: {
 		createSongSheet() {
-	        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.ugmax.cn/vuedata/createSongSheet.json')
-	        // this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/createSongSheet.json')
-	        this.$http.get('https://charleszhang6.github.io/vue-neteasyMusic/static/json/createSongSheet.json')
+	        this.$http.get('https://iCharlesZ.github.io/vue-neteasyMusic/static/json/createSongSheet.json')
 	        	.then((res) => {
-	        		// console.log(res.data)
 	        		this.items = res.data
 	        	})
 	        	.catch(function(error){

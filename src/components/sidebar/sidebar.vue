@@ -29,8 +29,8 @@
 			return {
 				info: {
 					bg: "http://lsl.image.alimmdn.com/vue/infobg3.jpg",
-					avatar: "https://CharlesZhang6.github.io/vue-neteasyMusic/src/assets/images/headImg.jpg",
-					name: 'zhchi',
+					avatar: "https://iCharlesZ.github.io/vue-neteasyMusic/src/assets/images/headImg.jpg",
+					name: 'charles',
 					grade: 10
 				},
 				sign: '签到',
