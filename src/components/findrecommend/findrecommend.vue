@@ -78,7 +78,7 @@
 		},
 		methods: {
 			getSwiperJson() {
-		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/swiper.json')
+				this.$http.get('https://iCharlesZ.github.io/vue-neteasyMusic/static/json/swiper.json')
 				.then((response) => {
 		        		this.items = response.data.items
 		        	})
@@ -87,7 +87,7 @@
 		        	})
 			},
 			getRecmdJson() {
-		        this.$http.get('https://bird.ioliu.cn/v1?url=https://www.zhchi.me/works/vuedata/neteasyMusic/recmdList.json')
+				this.$http.get('https://iCharlesZ.github.io/vue-neteasyMusic/static/json/recmdList.json')
 		        	.then((response) => {
 		        		let result = [];
 		        		let count = response.data.listNum.length;

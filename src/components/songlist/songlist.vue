@@ -1,6 +1,6 @@
 <template>
 	<div class="songlists" v-if="getSongSheet.playlist">
-		<div class="songlist" v-for="(item, index) in getSongSheet.playlist.tracks" @click="playIndex(item.id)">
+		<div class="songlist" v-for="(item, index) in getSongSheet.playlist.tracks" :key="index" @click="playIndex(item.id)">
 			<div class="warpper">
 				<div class="listIndex">
 					<span class="index">{{index + 1}}</span>
@@ -31,21 +31,23 @@
 			playIndex (id) {
 				this.$http.get('https://bird.ioliu.cn/netease/song?id=' + id)
 					.then((res) => {
-						// console.log(res.data.data.mp3.url)
-						store.dispatch({
-							type: 'set_MusicDetail',
-							isShow: true
-						})
-						store.commit({
-							type: 'setMusicList',
-							data: res.data.data
-						})
-						store.commit({
-							type: 'playIndex',
-							url: res.data.data.mp3.url
-						})
-						store.commit('play')
-
+						if (res.data.data.mp3.url) {
+							store.dispatch({
+								type: 'set_MusicDetail',
+								isShow: true
+							})
+							store.commit({
+								type: 'setMusicList',
+								data: res.data.data
+							})
+							store.commit({
+								type: 'playIndex',
+								url: res.data.data.mp3.url
+							})
+							store.commit('play')
+						} else {
+							alert("该资源为VIP专享!")
+						}
 					})
 					.catch(function(error){
 				        console.log(error)

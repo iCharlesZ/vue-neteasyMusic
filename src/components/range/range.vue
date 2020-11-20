@@ -45,12 +45,12 @@
 			},
 			progressWidth () {
 				return {
-					'width': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}%`
+					'width': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}%)`
 				}
 			},
 			progressBall () {
 				return {
-					'left': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}% -7px)`
+					'left': `calc(${(this.$store.getters.getCurrentTime || 0 / this.$store.getters.getMusicDuration * 100).toFixed(2)}% -7px)`
 				}
 			}
 		},
@@ -161,7 +161,6 @@
 				position:absolute
 				width:14px
 				height:14px
-				left:-7px
 				background:#fff
 				border-radius:50%
 				cursor:pointer
